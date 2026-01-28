@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "sentinel-mcp": {
+      "url": "https://sentinel.microsoft.com/mcp/data-exploration",
+      "transport": {
+        "type": "http",
+        "headers": {
+          "Authorization": "Bearer YOUR_TOKEN_HERE",
+          "Accept": "application/json, text/event-stream",
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  }
+}

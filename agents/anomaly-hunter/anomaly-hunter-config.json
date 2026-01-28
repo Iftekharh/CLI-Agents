@@ -1,0 +1,137 @@
+{
+  "agent": {
+    "name": "Anomaly Hunter",
+    "version": "1.0",
+    "description": "Continuously hunt for anomalous patterns across security data",
+    "enabled": true
+  },
+  "baseline": {
+    "enabled": true,
+    "baselinePeriodDays": 30,
+    "minimumDataPoints": 10,
+    "refreshIntervalHours": 24,
+    "storageLocation": "C:\\App\\loop\\baselines"
+  },
+  "detection": {
+    "modules": {
+      "authenticationAnomalies": {
+        "enabled": true,
+        "priority": "High",
+        "checks": [
+          "unusual_login_times",
+          "unusual_locations",
+          "impossible_travel",
+          "unusual_user_agent",
+          "multiple_failed_logins"
+        ]
+      },
+      "dataAccessAnomalies": {
+        "enabled": true,
+        "priority": "High",
+        "checks": [
+          "unusual_data_volume",
+          "unusual_query_patterns",
+          "sensitive_data_access",
+          "bulk_downloads"
+        ]
+      },
+      "networkAnomalies": {
+        "enabled": true,
+        "priority": "Medium",
+        "checks": [
+          "unusual_destinations",
+          "unusual_protocols",
+          "data_transfer_volume",
+          "connection_patterns"
+        ]
+      },
+      "userBehaviorAnomalies": {
+        "enabled": true,
+        "priority": "High",
+        "checks": [
+          "role_deviation",
+          "application_usage",
+          "working_hours_deviation",
+          "resource_access_patterns"
+        ]
+      },
+      "privilegeAnomalies": {
+        "enabled": true,
+        "priority": "Critical",
+        "checks": [
+          "unexpected_elevation",
+          "admin_activity_patterns",
+          "permission_changes",
+          "service_account_usage"
+        ]
+      }
+    }
+  },
+  "scoring": {
+    "method": "weighted",
+    "thresholds": {
+      "critical": 90,
+      "high": 70,
+      "medium": 50,
+      "low": 30
+    },
+    "weights": {
+      "deviationMagnitude": 0.4,
+      "historicalFrequency": 0.2,
+      "entityRisk": 0.2,
+      "timeContext": 0.1,
+      "correlationFactor": 0.1
+    }
+  },
+  "alerting": {
+    "enabled": true,
+    "methods": {
+      "email": {
+        "enabled": false,
+        "recipients": ["soc@company.com"],
+        "severityThreshold": "High"
+      },
+      "teams": {
+        "enabled": false,
+        "webhookUrl": "",
+        "severityThreshold": "Critical"
+      },
+      "file": {
+        "enabled": true,
+        "outputPath": "C:\\App\\loop\\anomalies",
+        "severityThreshold": "Medium"
+      },
+      "sentinelIncident": {
+        "enabled": false,
+        "severityThreshold": "High"
+      }
+    },
+    "suppressDuplicates": true,
+    "suppressionWindowHours": 24
+  },
+  "reporting": {
+    "enabled": true,
+    "outputFormats": ["json", "markdown", "csv", "pdf", "html"],
+    "outputPath": "C:\\App\\loop\\reports",
+    "includeLowSeverity": false,
+    "generateDashboard": true,
+    "pdfOptions": {
+      "enabled": true,
+      "includeCharts": true,
+      "organization": "Security Operations Center",
+      "watermark": false
+    }
+  },
+  "performance": {
+    "maxConcurrentQueries": 3,
+    "queryTimeoutSeconds": 300,
+    "cacheResults": true,
+    "cacheTTLMinutes": 60
+  },
+  "schedule": {
+    "enabled": true,
+    "frequency": "hourly",
+    "specificTimes": ["08:00", "12:00", "16:00", "20:00"],
+    "runOnStartup": false
+  }
+}

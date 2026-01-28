@@ -1,0 +1,13 @@
+{
+  "environments": {
+    "example-environment": {
+      "displayName": "Example Sentinel Workspace",
+      "tenantId": "YOUR_TENANT_ID_HERE",
+      "resourceId": "4500ebfb-89b6-4b14-a480-7f749797bfcd",
+      "mcpServerUrl": "https://sentinel.microsoft.com/mcp/data-exploration",
+      "workspaceId": "YOUR_WORKSPACE_ID_HERE",
+      "description": "Template for Sentinel MCP environment configuration"
+    }
+  },
+  "currentEnvironment": "example-environment"
+}
