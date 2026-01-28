@@ -1,161 +1,52 @@
-# ====================================================================
-# Sentinel MCP Agents - Git Ignore Rules
-# ====================================================================
-# Prevents sensitive data and generated files from being committed
-# ====================================================================
-
-# ============================================================
-# CRITICAL SECURITY: Tokens & Credentials
-# ============================================================
-# Never commit these - they contain bearer tokens, tenant IDs, secrets
-
+# Sensitive configuration files with tokens and secrets
 mcp.json
 mcp-environments.json
-*.env
-.env.*
-secrets.json
-credentials.json
+email-config.json
+*.token.json
+.alpineskihouse-token.json
 
-# Azure CLI cache (may contain tokens)
-.azure/
-
-# Service Principal credentials
-service-principal-*.json
-sp-credentials.json
-
-# ============================================================
-# Generated Data & Reports
-# ============================================================
-
-# Report outputs (can be large, regenerated)
+# Generated reports (can be large)
 reports/
-!reports/.gitkeep
-
-# Baseline data (regenerated from Sentinel)
-baselines/
-!baselines/.gitkeep
-
-# Real-time anomaly alerts
 anomalies/
-!anomalies/.gitkeep
+baselines/
 
-# Logs
-*.log
-logs/
-!logs/.gitkeep
+# Node modules and dependencies
+node_modules/
+package-lock.json
 
-# ============================================================
-# PowerShell & System Files
-# ============================================================
+# Python
+__pycache__/
+*.py[cod]
+*.class
+.Python
+env/
+venv/
+*.egg-info/
 
-# PowerShell debugging
-*.ps1xml
-$PROFILE.*
-
-# Windows
-Thumbs.db
-Desktop.ini
-*.lnk
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Linux
-*~
-.directory
-
-# ============================================================
-# IDE & Editor Files
-# ============================================================
-
-# Visual Studio Code
+# IDE and editor files
 .vscode/
-!.vscode/settings.json.template
-!.vscode/extensions.json
-!.vscode/launch.json.template
-
-# JetBrains IDEs
 .idea/
-*.iml
-
-# Sublime Text
-*.sublime-workspace
-*.sublime-project
-
-# Vim
 *.swp
 *.swo
 *~
 
-# ============================================================
-# Temporary & Cache Files
-# ============================================================
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
 
-# PowerShell temporary files
+# Logs
+*.log
+logs/
+
+# Temporary files
 *.tmp
 *.temp
 temp/
-tmp/
 
-# Package managers
-node_modules/
-.npm/
-bower_components/
-
-# Python (if using Python agents)
-__pycache__/
-*.py[cod]
-*$py.class
-.Python
-venv/
-ENV/
-.venv/
-
-# ============================================================
-# Build Artifacts
-# ============================================================
-
-# Compiled outputs
+# Build outputs
+dist/
+build/
 *.dll
 *.exe
-*.pdb
-bin/
-obj/
-
-# Archives
-*.zip
-*.tar
-*.tar.gz
-*.rar
-*.7z
-
-# ============================================================
-# Test Data
-# ============================================================
-
-# Test outputs (unless you want to track them)
-test-results/
-coverage/
-*.test.json
-
-# Sample data with potentially sensitive info
-sample-data/
-test-data/
-
-# ============================================================
-# User-Specific Configuration
-# ============================================================
-
-# Each user's personal settings
-user-config.json
-my-*.json
-local-settings.json
-
-# ============================================================
-# Keep Empty Directories
-# ============================================================
-# Use .gitkeep files to preserve directory structure
-
-!.gitkeep
+*.out
