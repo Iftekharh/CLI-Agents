@@ -1,0 +1,7 @@
+{
+  "tenantId": "YOUR_TENANT_ID",
+  "clientId": "YOUR_CLIENT_ID",
+  "clientSecret": "YOUR_CLIENT_SECRET",
+  "senderEmail": "sentinel-alerts@yourdomain.com",
+  "recipientEmail": "ihussain@microsoft.com"
+}
